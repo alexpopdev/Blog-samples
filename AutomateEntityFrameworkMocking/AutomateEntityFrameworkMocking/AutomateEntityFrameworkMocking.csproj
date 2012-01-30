@@ -43,11 +43,20 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.mocks">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\packages\AutoFixture.2.8.0\lib\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.SemanticComparison">
+      <HintPath>..\packages\AutoFixture.2.8.0\lib\Ploeh.SemanticComparison.dll</HintPath>
     </Reference>
     <Reference Include="pnunit.framework">
       <HintPath>..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
@@ -74,11 +83,22 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="Northwind.Context.cs">
+    <Compile Include="Northwind.DbContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Northwind.Context.tt</DependentUpon>
+      <DependentUpon>Northwind.DbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Northwind.IDbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Northwind.IDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Northwind.TestDbContextBuilder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Northwind.TestDbContextBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Northwind.DbContext.Extended.cs" />
     <Compile Include="Northwind.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,9 +119,11 @@
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryableExtensions.cs" />
     <Compile Include="Shipper.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
+    <Compile Include="SqlFunctions.cs" />
     <Compile Include="Supplier.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
@@ -113,9 +135,17 @@
       <LastGenOutput>Northwind.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.config" />
-    <None Include="Northwind.Context.tt">
+    <None Include="Northwind.DbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Northwind.Context.cs</LastGenOutput>
+      <LastGenOutput>Northwind.DbContext.cs</LastGenOutput>
+    </None>
+    <None Include="Northwind.IDbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Northwind.IDbContext.cs</LastGenOutput>
+    </None>
+    <None Include="Northwind.TestDbContextBuilder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Northwind.TestDbContextBuilder.cs</LastGenOutput>
     </None>
     <None Include="Northwind.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

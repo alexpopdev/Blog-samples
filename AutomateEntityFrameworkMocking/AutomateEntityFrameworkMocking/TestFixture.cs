@@ -6,11 +6,13 @@ using NUnit.Framework;
 
 namespace AutomateEntityFrameworkMocking
 {
+    using Ploeh.AutoFixture;
+
     [TestFixture]
-    public class TestFixture1
+    public class TestFixture
     {
         [Test]
-        public void Customers_Count_GreaterThanZero()
+        public void SqlCE_Customers_Count_GreaterThanZero()
         {
             int customersCount = 0;
             using (var dataContext = new NorthwindEntities())
@@ -20,11 +22,23 @@ namespace AutomateEntityFrameworkMocking
             Assert.That(customersCount, Is.GreaterThan(0));
         }
 
-        // This test fail for example, replace result or delete this test to see all tests pass
+
         [Test]
-        public void TestFault()
+        public void InMemory_Customers_Count_GreaterThanZero()
         {
-            Assert.IsTrue(false);
+            var dbContextBuilder = new DbContextBuilder();
+            var fixture = new Ploeh.AutoFixture.Fixture();
+            
+            dbContextBuilder.Customers = fixture.Build<Customer>()
+                .Without(c => c.Orders)
+                .CreateMany(2)
+                .ToList();
+
+            IDbContext dbContext = dbContextBuilder.BuildDbContext();
+
+            int customersCount = dbContext.Customers.Count();
+
+            Assert.That(customersCount, Is.GreaterThan(0));
         }
     }
 }
