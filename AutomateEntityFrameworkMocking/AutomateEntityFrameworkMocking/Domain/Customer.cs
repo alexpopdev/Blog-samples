@@ -10,7 +10,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AutomateEntityFrameworkMocking
+namespace AutomateEntityFrameworkMocking.Domain
 {
     public partial class Customer
     {

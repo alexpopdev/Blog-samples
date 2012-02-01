@@ -10,18 +10,19 @@
 using System;
 using System.Collections.Generic;
 
-namespace AutomateEntityFrameworkMocking
+namespace AutomateEntityFrameworkMocking.Domain
 {
-    public partial class Order_Detail
+    public partial class Shipper
     {
-        public int Order_ID { get; set; }
-        public int Product_ID { get; set; }
-        public decimal Unit_Price { get; set; }
-        public short Quantity { get; set; }
-        public float Discount { get; set; }
+        public Shipper()
+        {
+            this.Orders = new HashSet<Order>();
+        }
     
-        public virtual Product Product { get; set; }
-        public virtual Order Order { get; set; }
+        public int Shipper_ID { get; set; }
+        public string Company_Name { get; set; }
+    
+        public virtual ICollection<Order> Orders { get; set; }
     }
     
 }

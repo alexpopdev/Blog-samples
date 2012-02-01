@@ -1,4 +1,4 @@
-﻿namespace AutomateEntityFrameworkMocking
+﻿namespace AutomateEntityFrameworkMocking.Data
 {
     using System;
     using System.Data.Entity;
@@ -6,7 +6,7 @@
     using System.Linq;
     using System.Linq.Expressions;
 
-    
+    using AutomateEntityFrameworkMocking.Domain;
 
     /// <summary>
     /// IDbContext is created from the example described and made available here: http://blogs.clariusconsulting.net/kzu/how-to-design-a-unit-testable-domain-model-with-entity-framework-code-first/

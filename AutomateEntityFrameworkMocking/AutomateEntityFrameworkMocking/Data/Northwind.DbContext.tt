@@ -44,6 +44,8 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
+using AutomateEntityFrameworkMocking.Domain;
+
 <#
 if (container.FunctionImports.Any())
 {

@@ -74,87 +74,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs">
+    <Compile Include="Domain\Category.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="Customer.cs">
+    <Compile Include="Domain\Customer.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="Employee.cs">
+    <Compile Include="Domain\CustomerDTO.cs" />
+    <Compile Include="Domain\CustomerService.cs" />
+    <Compile Include="Domain\Employee.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="Northwind.DbContext.cs">
+    <Compile Include="Data\Northwind.DbContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Northwind.DbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Northwind.IDbContext.cs">
+    <Compile Include="Domain\Northwind.IDbContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Northwind.IDbContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Northwind.TestDbContextBuilder.cs">
+    <Compile Include="Tests\Northwind.TestDbContextBuilder.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Northwind.TestDbContextBuilder.tt</DependentUpon>
     </Compile>
-    <Compile Include="Northwind.DbContext.Extended.cs" />
-    <Compile Include="Northwind.cs">
+    <Compile Include="Data\Northwind.DbContext.Extended.cs" />
+    <Compile Include="Domain\Northwind.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="Northwind.Designer.cs">
+    <Compile Include="Data\Northwind.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Northwind.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs">
+    <Compile Include="Domain\Order.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="Order_Detail.cs">
+    <Compile Include="Domain\Order_Detail.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs">
+    <Compile Include="Domain\Product.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryableExtensions.cs" />
-    <Compile Include="Shipper.cs">
+    <Compile Include="Domain\QueryableExtensions.cs" />
+    <Compile Include="Domain\Shipper.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="SqlFunctions.cs" />
-    <Compile Include="Supplier.cs">
+    <Compile Include="Domain\SqlFunctions.cs" />
+    <Compile Include="Domain\Supplier.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestFixture.cs" />
+    <Compile Include="Tests\CustomerServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Northwind.edmx">
+    <EntityDeploy Include="Data\Northwind.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Northwind.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="App.config" />
-    <None Include="Northwind.DbContext.tt">
+    <None Include="Data\Northwind.DbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Northwind.DbContext.cs</LastGenOutput>
     </None>
-    <None Include="Northwind.IDbContext.tt">
+    <None Include="Domain\Northwind.IDbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Northwind.IDbContext.cs</LastGenOutput>
     </None>
-    <None Include="Northwind.TestDbContextBuilder.tt">
+    <None Include="Tests\Northwind.TestDbContextBuilder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Northwind.TestDbContextBuilder.cs</LastGenOutput>
     </None>
-    <None Include="Northwind.tt">
+    <None Include="Domain\Northwind.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Northwind.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Northwind.sdf">
+    <Content Include="App_Data\Northwind.sdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

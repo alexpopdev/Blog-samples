@@ -1,4 +1,4 @@
-﻿namespace AutomateEntityFrameworkMocking
+﻿namespace AutomateEntityFrameworkMocking.Domain
 {
     using System;
     using System.Linq;
