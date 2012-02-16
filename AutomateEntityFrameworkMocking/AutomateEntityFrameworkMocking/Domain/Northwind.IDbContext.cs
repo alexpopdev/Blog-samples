@@ -22,11 +22,11 @@ namespace AutomateEntityFrameworkMocking.Domain
 
 		void SaveChanges();
 
-    	void Add<T>(T entity) where T : class;
+    		void Add<T>(T entity) where T : class;
 	
 		void Delete<TEntity,TEntityKey>(TEntityKey id) where TEntity : class;	
 
-    	void Delete<TEntity>(TEntity item) where TEntity : class;
+    		void Delete<TEntity>(TEntity item) where TEntity : class;
 	 
 		IQueryable<Category> Categories	{ get; }
 	
