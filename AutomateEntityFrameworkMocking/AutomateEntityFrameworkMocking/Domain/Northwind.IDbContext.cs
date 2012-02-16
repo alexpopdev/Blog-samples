@@ -13,55 +13,38 @@
 namespace AutomateEntityFrameworkMocking.Domain
 {
 
-using System;
-using System.Linq;
+	using System;
+	using System.Linq;
 
 
-public interface IDbContext : IDisposable
-{   
+	public interface IDbContext : IDisposable
+	{   
 
-	void SaveChanges();
+		void SaveChanges();
 
-    void Add<T>(T entity) where T : class;
+    	void Add<T>(T entity) where T : class;
 	
-	void Delete<TEntity,TEntityKey>(TEntityKey id) where TEntity : class;	
+		void Delete<TEntity,TEntityKey>(TEntityKey id) where TEntity : class;	
 
-    void Delete<TEntity>(TEntity item) where TEntity : class;
+    	void Delete<TEntity>(TEntity item) where TEntity : class;
+	 
+		IQueryable<Category> Categories	{ get; }
+	
+   		IQueryable<Customer> Customers	{ get; }
+	  
+		IQueryable<Employee> Employees	{ get; }
+	 
+		IQueryable<Order_Detail> Order_Details	{ get; }
+	  
+		IQueryable<Order> Orders	{ get; }
+	  
+		IQueryable<Product> Products	{ get; }
+	
+   		IQueryable<Shipper> Shippers	{ get; }
 		
-   
+		IQueryable<Supplier> Suppliers	{ get; }
 	
-	IQueryable<Category> Categories	{ get; }
-	
-   
-	
-	IQueryable<Customer> Customers	{ get; }
-	
-   
-	
-	IQueryable<Employee> Employees	{ get; }
-	
-   
-	
-	IQueryable<Order_Detail> Order_Details	{ get; }
-	
-   
-	
-	IQueryable<Order> Orders	{ get; }
-	
-   
-	
-	IQueryable<Product> Products	{ get; }
-	
-   
-	
-	IQueryable<Shipper> Shippers	{ get; }
-	
-   
-	
-	IQueryable<Supplier> Suppliers	{ get; }
-	
-
-}
+	}
 
 }
 
