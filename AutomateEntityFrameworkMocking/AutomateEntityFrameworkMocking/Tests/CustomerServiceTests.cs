@@ -73,13 +73,62 @@
             
             Assert.That(customersCount, Is.EqualTo(1));
         }
-        
+
+
         [Test]
         public void DbContextBuilder_GetLast5CustomersWithOrders_HasCorrectCount()
         {
             var dbContextBuilder = new DbContextBuilder();
+            //Arrange
+            dbContextBuilder.Customers.AddRange(
+                new[]
+                {
+                    new Customer
+                        {
+                            Company_Name = "Company1",
+                        },
+                    new Customer
+                        {
+                            Company_Name = "Company2",
+                        }
+                });
+
+            dbContextBuilder.Customers[0].Orders = 
+                new[]
+                {
+                    new Order
+                        {
+                            Order_ID = 1,
+                            Order_Date = new DateTime(2012, 02, 01),
+                            Customer = dbContextBuilder.Customers[0]
+                        }, 
+                    new Order
+                        {
+                            Order_ID = 2,
+                            Order_Date = new DateTime(2012, 02, 02),
+                            Customer = dbContextBuilder.Customers[0]
+                        }
+                };
+
+            //dbContextBuilder.Customers[0].Orders. = DbContextBuilder.Orders;
+
+            IDbContext dbContext = dbContextBuilder.BuildDbContext();
+
+            var customerService = new CustomerService(dbContext);
+
+            //Act
+            int customersCount = customerService.GetLast5CustomersWithOrders().Count();
+
+            Assert.That(customersCount, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void DbContextBuilderWithAutoFixture_GetLast5CustomersWithOrders_HasCorrectCount()
+        {
+            var dbContextBuilder = new DbContextBuilder();
             var fixture = new Ploeh.AutoFixture.Fixture();
 
+            //Arrange
             dbContextBuilder.Customers = fixture.Build<Customer>()
                 .Without(c => c.Orders)
                 .CreateMany(2)
@@ -96,6 +145,7 @@
 
             IDbContext dbContext = dbContextBuilder.BuildDbContext();
 
+            //Act
             var customerService = new CustomerService(dbContext);
             int customersCount = customerService.GetLast5CustomersWithOrders().Count();
 
