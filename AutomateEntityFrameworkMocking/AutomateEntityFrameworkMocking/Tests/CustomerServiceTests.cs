@@ -110,8 +110,6 @@
                         }
                 };
 
-            //dbContextBuilder.Customers[0].Orders. = DbContextBuilder.Orders;
-
             IDbContext dbContext = dbContextBuilder.BuildDbContext();
 
             var customerService = new CustomerService(dbContext);
