@@ -86,9 +86,12 @@
                 .ToList();
 
             dbContextBuilder.Customers[0].Orders = fixture.Build<Order>()
+                .With(o => o.Customer, dbContextBuilder.Customers[0])
+                .With(o => o.Order_Date, DateTime.Now.AddDays(-1))
                 .Without(o => o.Order_Details)
-               
-                .CreateMany(1)
+                .Without(o => o.Employee)
+                .Without(o => o.Shipper)
+                .CreateMany(3)
                 .ToList();
 
             IDbContext dbContext = dbContextBuilder.BuildDbContext();
