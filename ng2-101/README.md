@@ -1,5 +1,5 @@
 # ng2-101
-An Angular 2 101 example  
+An Angular 2 101 example for parent and child components
 
 Prerequisites: Node.js and TypeScript
 

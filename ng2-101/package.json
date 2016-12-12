@@ -1,7 +1,7 @@
 {
   "name": "ng2-101",
   "version": "1.0.0",
-  "description": "An Angular 2 101 Example",
+  "description": "An Angular 2 101 example for parent and child components",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
