@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ChildComponent } from './child.component';
+import { Model } from './model';
+import { AppService } from './app.service';
+
 @Component({
   selector: 'div.container.my-app',
   template: `
@@ -9,24 +12,27 @@ import { ChildComponent } from './child.component';
           <p class="lead">{{description}}</p>
       </div></div>
       <div class="row">
-        <div class="col-md-6" my-child-comp myText="First child component goes here" (onChildMessage)="onChildMessageReceived($event)"></div>      
-        <div class="col-md-6" my-child-comp [myText]="secondComponentText" (onChildMessage)="onChildMessageReceived($event)"></div>         
+      <div class="col-md-12" *ngIf="models.length == 0"><p>There are no models loaded ...</p></div> 
+        <div class="col-md-6" my-child-comp *ngFor="let model of models" 
+             [myId]="model.id" [myText]="model.description" (onChildMessage)="onChildMessageReceived($event)"></div>
       </div>
       <div class="row"><div class="col-md-12"><div class="well well-sm">         
             <p>Last message from a child component: <strong>{{lastMessage}}</strong></p>
       </div></div></div>          
-    </div>`
+    </div>`,
+    providers: [ AppService]
 })
 export class AppComponent {
   title: string;
   description: string;
-  secondComponentText: string;
+  models: Model[];
   lastMessage: string;
 
-  constructor() {
+  constructor(appService: AppService) {
     this.title = 'Angular 2 102 example';
     this.description = 'This is an example for Angular 2 parent and child components with directives';
-    this.secondComponentText = 'Second child component goes here';
+    //this.models =[];    
+    this.models = appService.getModels();
   }
 
   onChildMessageReceived($event: string) {
