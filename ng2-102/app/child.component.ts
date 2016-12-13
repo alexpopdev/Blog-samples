@@ -20,7 +20,7 @@ export class ChildComponent {
   } 
   
   ngOnInit(){
-   this.message = `Hello from ChildComponent with id: ${this.myId}`;
+   this.message = `Hello from child with id ${this.myId}`;
   }
 
   onClick(){

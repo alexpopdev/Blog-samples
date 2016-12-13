@@ -4,21 +4,27 @@ import { Model } from './model';
 import { AppService } from './app.service';
 
 @Component({
-  selector: 'div.container.my-app',
-  template: `
-    <div class="container text-center">
-      <div class="row"><div class="col-md-12">
-          <div class="page-header"><h1>{{title}}</h1></div>
+  selector: 'div.container.text-center.my-app',
+  template: `    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h1>{{title}}</h1></div>
           <p class="lead">{{description}}</p>
-      </div></div>
-      <div class="row">
-      <div class="col-md-12" *ngIf="models.length == 0"><p>There are no models loaded ...</p></div> 
-        <div class="col-md-6" my-child-comp *ngFor="let model of models" 
-             [myId]="model.id" [myText]="model.description" (onChildMessage)="onChildMessageReceived($event)"></div>
+        </div>
       </div>
-      <div class="row"><div class="col-md-12"><div class="well well-sm">         
-            <p>Last message from a child component: <strong>{{lastMessage}}</strong></p>
-      </div></div></div>          
+    <div class="row">
+      <div class="col-md-12" *ngIf="models.length == 0">
+        <p>There are no models loaded ...</p>
+      </div> 
+      <div class="col-md-6" my-child-comp *ngFor="let model of models" 
+            [myId]="model.id" [myText]="model.description" (onChildMessage)="onChildMessageReceived($event)">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well well-sm"><p>Last message from a child component: <strong>{{lastMessage}}</strong></p></div>
+      </div>
     </div>`,
     providers: [ AppService]
 })
